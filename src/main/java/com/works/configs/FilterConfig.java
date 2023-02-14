@@ -1,5 +1,6 @@
 package com.works.configs;
 
+import com.works.entities.Login;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.*;
@@ -37,6 +38,10 @@ public class FilterConfig implements Filter {
             if ( sessionControl ) {
                 res.sendRedirect("/");
             }else {
+                // kullanıcı sisteme girince isimin üst kısımda yazması için buradan alacağız.
+                Login login = (Login) req.getSession().getAttribute("user");
+                // açılacak olan bütün sayfalara veri gönderme işlemleri
+                req.setAttribute("user",login);
                 chain.doFilter(req, res);
             }
         }else {
