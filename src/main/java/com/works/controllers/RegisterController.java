@@ -30,10 +30,10 @@ public class RegisterController {
     public String adminRegister(@Valid Login login,  BindingResult bindingResult,Model model) {
         if(bindingResult.hasErrors()){
             model.addAttribute("errors",bindingResult.getFieldErrors());
-            List<FieldError> fieldErrorList= bindingResult.getFieldErrors();
-            for(FieldError error : fieldErrorList){
-                System.out.println(error.getField() + " " +error.getDefaultMessage());
-            }
+          //  List<FieldError> fieldErrorList= bindingResult.getFieldErrors();
+          //  for(FieldError error : fieldErrorList){
+           //     System.out.println(error.getField() + " " +error.getDefaultMessage());
+         //   }
             return "register";
 
         }
