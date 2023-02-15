@@ -3,7 +3,12 @@ package com.works.services;
 import com.works.entities.Product;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -22,9 +27,7 @@ public class ProductService {
         }
     }
 
-    public List<Product> list(){
-        return productRepository.findAll();
-    }
+
 
     public boolean delete(String stpid){
         try {
@@ -36,4 +39,14 @@ public class ProductService {
         }
     }
 
-}
+    public Page<Product> list(int pageCount) {
+        Pageable pageable =  PageRequest.of(pageCount,5);
+        Page<Product> page = (Page<Product>) productRepository.findAll(pageable);
+
+        return  page;
+
+    }
+
+    }
+
+

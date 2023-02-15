@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
 
-                <tr th:each="item : ${list}">
+                <tr th:each="item : ${list.getContent()}">
                     <th scope="row" th:text="${item.pid}"></th>
                     <td th:text="${item.title}">Mark</td>
                     <td th:text="${item.price}">Otto</td>
@@ -56,11 +56,8 @@
             </table>
             <nav>
                 <ul class="pagination sm">
-                    <li class="page-item active" aria-current="page">
-                        <span class="page-link">1</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                    <li th:each="item, iter : ${pages}" class="page-item"><a class="page-link" th:href="${'?pageCount='+iter.index}" th:text="${iter.index +1}"></a></li>
                 </ul>
             </nav>
         </div>
