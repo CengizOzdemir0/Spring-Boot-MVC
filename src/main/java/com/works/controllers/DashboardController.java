@@ -23,6 +23,8 @@ public class DashboardController {
     @PostMapping("/productAdd")
     public String productAdd(Product product){
         productService.save(product);
+        // redirect demek farklı bir sayfya veya sayfayı yenilemek için kullanılır.
+        // örneğin ürün ekledikten sonra tekrar dashboarda göndermek için kullanılır.
         return "redirect:/dashboard";
     }
 }
