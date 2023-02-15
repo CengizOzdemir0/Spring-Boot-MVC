@@ -26,8 +26,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public boolean delete(Long pid){
+    public boolean delete(String stpid){
         try {
+            Long pid = Long.parseLong(stpid);
             productRepository.deleteById(pid);
             return true;
         }catch (Exception ex){

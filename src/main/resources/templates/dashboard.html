@@ -49,7 +49,7 @@
                     <td th:text="${item.title}">Mark</td>
                     <td th:text="${item.price}">Otto</td>
                     <td th:text="${item.color}">red</td>
-                    <td><a href="/productDelete/1" class="btn btn-danger btn-sm">Delete</a></td>
+                    <td><a th:href="${'/productDelete/'+ item.pid}" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>
 
                 </tbody>

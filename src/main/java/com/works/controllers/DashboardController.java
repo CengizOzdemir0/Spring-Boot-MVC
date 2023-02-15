@@ -6,7 +6,9 @@ import com.works.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -25,6 +27,12 @@ public class DashboardController {
         productService.save(product);
         // redirect demek farklı bir sayfya veya sayfayı yenilemek için kullanılır.
         // örneğin ürün ekledikten sonra tekrar dashboarda göndermek için kullanılır.
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/productDelete/{pid}")
+    public String productDelete(@PathVariable String pid){
+        boolean deleteStatus = productService.delete(pid);
         return "redirect:/dashboard";
     }
 }
